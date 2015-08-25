@@ -11,45 +11,46 @@
 #----------------------Start Routine-------------------------#
 
 # Definitions
-ctwn<-function(fileDir,whichplot,pdfoutput) {
-years <-c(1980:2009) # Assume 30 years (1980-2009) for all sensitivity tests
-co2 <- c(360,450,540,630,720)
-Tmaxmin <- c(-2,0,2,4,6,8)
-Rainfall <- c(25,50,75,100,125,150,175,200)
-Fertilizer <- c(0,30,60,90,120,150,180,210)
-DSSATsens <- matrix(0, 30, 32) # Create placeholder matrix, to speed things up. 
-APSIMsens <- matrix(0, 30, 32) # Create placeholder matrix, to speed things up.
-Infosens <- matrix(0, 30, 32) # Create placeholder matrix, to speed things up.
-
-# List all ACMO files
-files <- list.files(path=fileDir, pattern="ACMO*", full.names=T, recursive=FALSE)
-
+  ctwn<-function(fileDir,whichplot,pdfoutput) {
+  years <-c(1980:2009) # Assume 30 years (1980-2009) for all sensitivity tests
+  co2 <- c(360,450,540,630,720)
+  Tmaxmin <- c(-2,0,2,4,6,8)
+  Rainfall <- c(25,50,75,100,125,150,175,200)
+  Fertilizer <- c(0,30,60,90,120,150,180,210)
+  DSSATsens <- matrix(0, 30, 32) # Create placeholder matrix, to speed things up. 
+  APSIMsens <- matrix(0, 30, 32) # Create placeholder matrix, to speed things up.
+  Infosens <- matrix(0, 30, 32) # Create placeholder matrix, to speed things up.
+  
+  # List all ACMO files
+  files <- list.files(path=fileDir, pattern="ACMO*", full.names=T, recursive=FALSE)
+  
+  
 # Find the models associated with each ACMO file (only considering 3 for now, but more can be added)
 
 	# Find APSIM
 for(d in 1:length(files)) {
 if(grepl("APSIM", files[d])) {
-print("found")
+print("found APSIM")
 APSIM <- read.csv(file=files[d],skip = 2, head=TRUE,sep=",")
 	# If APSIM ACMO exists, then extract the 30 years x 32 Linear Factor Analysis Sensitivity Tests for yield, or other variable of interest. Here is where we can change the dependent variable (see "HWAH" below)
 for (i in 1:32) {
-APSIMsens[,i] <- APSIM$HWAH[(1+30*(i-1)):(30+30*(i-1))] 
+APSIMsens[,i] <- APSIM$HWAH_S[(1+30*(i-1)):(30+30*(i-1))] 
 }}
 	# Finish looping, and print done. If "done" is reached without a "found", then model doesn't exist.
-else {print("done")}
+else {print("done reading APSIM (if found)")}
 }
 
 	# Find DSSAT
 for(d in 1:length(files)) {
 if(grepl("DSSAT", files[d])) {
-print("found")
+print("found DSSAT")
 DSSAT <- read.csv(file=files[d],skip = 2, head=TRUE,sep=",")
 	# If DSSAT ACMO exists, then extract the 30 years x 32 Linear Factor Analysis Sensitivity Tests for yield, or other variable of interest. Here is where we can change the dependent variable (see "HWAH" below)
 for (i in 1:32) {
-DSSATsens[,i] <- DSSAT$HWAH[(1+30*(i-1)):(30+30*(i-1))] 
+DSSATsens[,i] <- DSSAT$HWAH_S[(1+30*(i-1)):(30+30*(i-1))] 
 }}
 	# Finish looping, and print done. If "done" is reached without a "found", then model doesn't exist.
-else {print("done")}
+else {print("done reading DSSAT (if found)")}
 }
 
 	# Find Infocrop
@@ -59,7 +60,7 @@ print("found")
 Info <- read.csv(file=files[d],skip = 2, head=TRUE,sep=",")
 	# If Infocrop ACMO exists, then extract the 30 years x 32 Linear Factor Analysis Sensitivity Tests for yield, or other variable of interest. Here is where we can change the dependent variable (see "HWAH" below)
 for (i in 1:32) {
-Infosens[,i] <- Info$HWAH[(1+30*(i-1)):(30+30*(i-1))] 
+Infosens[,i] <- Info$HWAH_S[(1+30*(i-1)):(30+30*(i-1))] 
 }}
 	# Finish looping, and print done. If "done" is reached without a "found", then model doesn't exist.
 else {print("done")}
@@ -199,7 +200,10 @@ dev.off()
 }
 
 args<-commandArgs(trailingOnly=TRUE)
+#fileDir is the path to data
 fileDir<-args[1]
+#whichplot can be "b" for boxplot or "l" for linear plot
 whichplot<-args[2]
+#pdfoutput = "pdf", "tif" or "png"
 pdfoutput<-args[3]
 ctwn(fileDir,whichplot,pdfoutput)
