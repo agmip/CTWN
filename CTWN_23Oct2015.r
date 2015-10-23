@@ -100,7 +100,7 @@ assign(model, var)
 #CO2 at 30 N________________________
 
 # CHANGE NEXT 4 LINES - SPECIFY NUMBER OF MODELS AND MODEL NAMES HERE
-nummod <- 1 #If you are just using one model here, just edit "model1". For now, this is set up for one or two models, but can be amended for 3.
+nummod <- 2 #If you are just using one model here, just edit "model1". For now, this is set up for one or two models, but can be amended for 3.
 model1 <- APSIM #Specify model name here. Make sure the legend is consistent
 model2 <- DSSAT #Specify model name here. Make sure the legend is consistent
 modname <- c('APSIM','DSSAT') # Make sure the legend is consistent
@@ -140,11 +140,11 @@ dev.off()}
 # Section 2.2 #
 #CO2 at 180 N________________________
 
-# CHANGE NEXT 4 LINES - SPECIFY NUMBER OF MODELS AND MODEL NAMES HERE
-nummod <- 1 #If you are just using one model here, just edit "model1". For now, this is set up for one or two models, but can be amended for 3.
-model1 <- APSIM #Specify model name here. Make sure the legend is consistent
-model2 <- DSSAT #Specify model name here. Make sure the legend is consistent
-modname <- c('APSIM','DSSAT') # Make sure the legend is consistent
+## CHANGE NEXT 4 LINES - SPECIFY NUMBER OF MODELS AND MODEL NAMES HERE
+#nummod <- 1 #If you are just using one model here, just edit "model1". For now, this is set up for one or two models, but can be amended for 3.
+#model1 <- APSIM #Specify model name here. Make sure the legend is consistent
+#model2 <- DSSAT #Specify model name here. Make sure the legend is consistent
+#modname <- c('APSIM','DSSAT') # Make sure the legend is consistent
 
 # Get data for plotting
 if(nummod==1) {
@@ -182,10 +182,10 @@ dev.off()}
 #Tmax/Tmin________________________ 
 
 # CHANGE NEXT 4 LINES - SPECIFY NUMBER OF MODELS AND MODEL NAMES HERE
-nummod <- 1 #If you are just using one model here, just edit "model1". For now, this is set up for one or two models, but can be amended for 3.
-model1 <- APSIM #Specify model name here. Make sure the legend is consistent
-model2 <- DSSAT #Specify model name here. Make sure the legend is consistent
-modname <- c('APSIM','DSSAT') # Make sure the legend is consistent
+#nummod <- 1 #If you are just using one model here, just edit "model1". For now, this is set up for one or two models, but can be amended for 3.
+#model1 <- APSIM #Specify model name here. Make sure the legend is consistent
+#model2 <- DSSAT #Specify model name here. Make sure the legend is consistent
+#modname <- c('APSIM','DSSAT') # Make sure the legend is consistent
 
 # Get data for plotting
 if(nummod==1) {
@@ -228,10 +228,10 @@ dev.off()}
 #Rainfall________________________ 
 
 # CHANGE NEXT 4 LINES - SPECIFY NUMBER OF MODELS AND MODEL NAMES HERE
-nummod <- 1 #If you are just using one model here, just edit "model1". For now, this is set up for one or two models, but can be amended for 3.
-model1 <- APSIM #Specify model name here. Make sure the legend is consistent
-model2 <- DSSAT #Specify model name here. Make sure the legend is consistent
-modname <- c('APSIM','DSSAT') # Make sure the legend is consistent
+#nummod <- 1 #If you are just using one model here, just edit "model1". For now, this is set up for one or two models, but can be amended for 3.
+#model1 <- APSIM #Specify model name here. Make sure the legend is consistent
+#model2 <- DSSAT #Specify model name here. Make sure the legend is consistent
+#modname <- c('APSIM','DSSAT') # Make sure the legend is consistent
 
 # Get data for plotting
 if(nummod==1) {
@@ -269,10 +269,10 @@ dev.off()}
 #Fertilizer (N)________________________
 
 # CHANGE NEXT 4 LINES: SPECIFY NUMBER OF MODELS AND MODEL NAMES HERE
-nummod <- 1 #If you are just using one model here, just edit "model1". For now, this is set up for one or two models, but can be amended for 3.
-model1 <- APSIM #Specify model name here. Make sure the legend is consistent
-model2 <- DSSAT #Specify model name here. Make sure the legend is consistent
-modname <- c('APSIM','DSSAT') # Make sure the legend is consistent
+#nummod <- 1 #If you are just using one model here, just edit "model1". For now, this is set up for one or two models, but can be amended for 3.
+#model1 <- APSIM #Specify model name here. Make sure the legend is consistent
+#model2 <- DSSAT #Specify model name here. Make sure the legend is consistent
+#modname <- c('APSIM','DSSAT') # Make sure the legend is consistent
 
 # Get data for plotting
 if(nummod==1) {
@@ -312,9 +312,9 @@ dev.off()}
 
 # CHANGE NEXT LINES 311-313. Please refer to CTWN/C3MP Protocols (or above key) for identification of linear factor Test #
 for(testnum in 1:32) {
-model1 <- APSIM # Set model 1 here
-model2 <- DSSAT # Set model 2 here
-modname <- c('APSIM','DSSAT') # Make sure the legend is consistent
+#model1 <- APSIM # Set model 1 here
+#model2 <- DSSAT # Set model 2 here
+#modname <- c('APSIM','DSSAT') # Make sure the legend is consistent
 
 P1 <- ecdf(model1[,testnum]) 
 P2 <- ecdf(model2[,testnum]) 
