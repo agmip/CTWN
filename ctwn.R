@@ -215,17 +215,17 @@ dev.off()
 }
 }
 
+
+fileDir<-"C:\AgMIP_Tools\Data\Phase 2 Review\Southern India\Sensitivity\batch-CTWN_1"
+#whichplot can be "b" for boxplot or "l" for linear plot
+whichplot<-"b"
+#pdfoutput = output file name
+pdfoutput<-"SIndia-CTWN.pdf"
+
 #args<-commandArgs(trailingOnly=TRUE)
-#
-##fileDir is the path to data
+
 #fileDir<-args[1]
-##whichplot can be "b" for boxplot or "l" for linear plot
 #whichplot<-args[2]
-##pdfoutput = "pdf", "tif" or "png"
 #pdfoutput<-args[3]
-#
-##fileDir<-"/Users/weixiong/Development/face-it/RIA/C3MP_New/Version_1.0.2"#args[1]
-##whichplot<-"l"#args[2]
-##pdfoutput<-"2.pdf"#args[3]
-#
-#ctwn(fileDir,whichplot,pdfoutput)
+
+ctwn(fileDir,whichplot,pdfoutput)
